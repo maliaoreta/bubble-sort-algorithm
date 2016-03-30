@@ -3,7 +3,10 @@ var arrayContainer = document.getElementById('arrayContainer');
 var bubbleSortButton = document.getElementById('bubbleSortButton');
   bubbleSortButton.addEventListener('click', function () { 
 
-    bubbleSortDivs(myArr); 
+    // setInterval(function () {
+
+      bubbleSortDivs(myArr);
+    // }, 5000);
   });
 
 // Create initial array divs
@@ -17,31 +20,44 @@ myArr.forEach(function (index) {
   arrayContainer.appendChild(divIndex);
 });
 
-
 function bubbleSortDivs (arr) {
 
+
+  var indexCount = 0;
   var swapped = true;
+
+
   while (swapped === true) {
-
     swapped = false;
+    
+    setInterval(function () {
+      
+    var curr = arr[indexCount];
+    var next = arr[indexCount + 1];
+    var currDiv = document.getElementById(curr);
+    var nextDiv = document.getElementById(next);
 
-    for (var i = 0; i < arr.length-1; i++) {
-
-      var curr = arr[i];
-      var next = arr[i+1];
-      var currDiv = document.getElementById(curr);
-      var nextDiv = document.getElementById(next);
 
       if (curr > next) {
-        arr[i] = next;
-        arr[i+1] = curr;
+        arr[indexCount] = next;
+        arr[indexCount + 1] = curr;
         swapped = true;
 
         currDiv.style.width = next + 'px';
         currDiv.id = next.toString();
         nextDiv.style.width = curr + 'px';
         nextDiv.id = curr.toString();
+
+        if (indexCount < arr.length-1) {
+          indexCount += 1;
+        }
       }
-    }
-  }
+        
+      else {
+
+        indexCount = 0;
+        
+      }
+    }, 500);
+   }  
 }
