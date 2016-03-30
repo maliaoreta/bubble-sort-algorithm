@@ -1,3 +1,4 @@
+// (for morning challenge) bubbleSort function that returns swap count 
 function bubbleSort (arr) {
 
   var swapped = true;
@@ -22,7 +23,32 @@ function bubbleSort (arr) {
   }
 
   this.arr = arr;
-  console.log('swapCount', swapCount);
   return swapCount;
+};
+
+
+// bubbleSort func that returns the sorted array, and is available to all Arrays
+Array.prototype.bubbleSort = function () {
+
+  var swapped = true;
+
+  while (swapped === true) {
+
+    swapped = false;
+
+    for (var i = 0; i < this.length-1; i++) {
+
+      var curr = this[i];
+      var next = this[i+1];
+
+      if (curr > next) {
+        this[i] = next;
+        this[i+1] = curr;
+        swapped = true;
+      }    
+    }
+  }
+
+  return this;
 }
 
