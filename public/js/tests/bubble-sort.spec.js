@@ -29,5 +29,26 @@ describe('bubbleSort', function () {
     expect(bubbleSort(testArr)).to.equal(4);
     expect(bubbleSort(testArr2)).to.equal(5);
     expect(bubbleSort(testArr3)).to.equal(4);
-  })
+  });
+
+  describe('bubbleSort', function () {
+
+    // checks if bubbleSort is a method available to all Arrays 
+    it('should be a method available to all Arrays', function () {
+
+      var checkMethodArr = [1, 2, 3];
+      expect(checkMethodArr).to.respondTo('bubbleSort');
+    });
+
+    it('should return the sorted array', function () {
+
+      var testArr = [3, 5, 1];
+      var testArr2 = [3, 2, 6, 1, 1, 9];
+      var testArr3 = [9, 7, 3, 0, 5];
+
+      expect(testArr.bubbleSort()).to.deep.equal([1, 3, 5]);
+      expect(testArr2.bubbleSort()).to.deep.equal([1, 1, 2, 3, 6, 9]);
+      expect(testArr3.bubbleSort()).to.deep.equal([0, 3, 5, 7, 9]);
+    });
+  });
 });
